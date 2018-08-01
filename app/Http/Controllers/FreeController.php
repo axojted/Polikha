@@ -61,7 +61,7 @@ class FreeController extends Controller
     // localhost:120/popularArticles
     public function popularArticles()
     {
-        $articles = POST::where('type','=','article')->orderBy('views','desc')->get();
+        $articles = POST::where('type','=','article')->orderBy('likes','desc')->get();
         return view('posts.discover-articles')->with('articles',$articles);   
     }
     public function leaderboard()

@@ -71,9 +71,11 @@ class AuthenticatedController extends Controller
             else{
                 return redirect(url()->current().'?post=1&sort=asc');
             }
+            $likes = DB::table('posts')->where('user_id',$user->id)->sum('likes');
             $array = array(
                 'user'=>$user,
-                'posts'=>$posts
+                'posts'=>$posts,
+                'likes'=>$likes
             );
             return view('pages.profile')->with('array',$array);
         }
@@ -229,15 +231,38 @@ class AuthenticatedController extends Controller
     }
     public function react(Request $request)
     {
+        $post = Post::find($request->input('post_id'));
+        $postLikesCounter = $post->likes;
         $reaction = Reaction::where('user_id',auth()->id())->where('post_id',$request->input('post_id'))->first();
         if(count($reaction)>0){
             if($request->input('react') == $reaction->reaction){
+                if($reaction->reaction == 'like'){
+                    if($postLikesCounter > 0){
+                        $post->likes = $postLikesCounter - 1;
+                        $post->save();
+                    }
+                }
                 $reaction->delete();
             }else{
+                if($request->input('react') == 'like')
+                {
+                    $post->likes = $postLikesCounter + 1;
+                    $post->save();
+                }else{
+                    if($postLikesCounter > 0){
+                        $post->likes = $postLikesCounter - 1;
+                        $post->save();
+                    }
+                }
                 $reaction->reaction = $request->input('react');
                 $reaction->save();
             }
         }else{
+                if($request->input('react') == 'like')
+                {
+                    $post->likes = $postLikesCounter + 1;
+                    $post->save();
+                }
             Reaction::create([
                 'user_id' => auth()->id(),
                 'post_id' => $request->input('post_id'),

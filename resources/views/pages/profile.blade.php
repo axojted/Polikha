@@ -11,7 +11,9 @@
                         <a href="#" title="twitter"><i class="social-medias text-dark fa fa-twitter"></i></a>
                         <a href="#" title="instagram"><i class="social-medias text-dark fa fa-instagram"></i></a>
                     </div>
-                    <p class="lead text-center w-25 profile-desc-text mx-auto">{{$array['user']->description}}</p>
+                    @if($array['user']->description)
+                        <p class="lead text-center w-25 profile-desc-text mx-auto">{{$array['user']->description}}</p>
+                    @endif
                 </div>
                 <div class="col-12 d-flex d-column">
                     @if(!auth()->check())
@@ -34,7 +36,7 @@
                 </div>
                 <div class="col-2 text-center">
                     <h5 class="text-light m-0">Likes</h5>
-                    <p class="m-0 profile-counter-text"></p>
+                    <p class="m-0 profile-counter-text">{{$array['likes']}}</p>
                 </div>
                 <div class="col-2 mr-auto text-center">
                     <h5 class="text-light m-0">Contributions</h5>
@@ -43,7 +45,7 @@
             </div>
         </div>
     </section>
-    <section>
+    <section class="profile-post-section">
         <div class="container pb-5">
             <div class="row pt-3 pb-5">
                 <div class="col-4">

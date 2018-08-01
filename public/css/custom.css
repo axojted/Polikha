@@ -1,6 +1,9 @@
 body,html{
     height: 100%;
 }
+*{
+    transition: all 150ms ease-in-out !important;
+}
 .custom-dropdown::after{
     content: none !important;
 }
@@ -186,15 +189,27 @@ footer{
 }
 .photo-list-container{
     height: 300px;
+    overflow: hidden;
 }
-.photo-list-image{
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    bottom:0px;
+.photo-list-desc{
+    transition: all 150ms ease-in-out;
+    background-color: rgba(0,0,0,0.75);
+    height: 65px;
+    width:100% !important;
+    margin-top: auto;
+    left: -100%;
+}
+.photo-list-reacts{
+    font-size: 12px !important;
+}
+.photo-list-counters{
+    font-size: 12px !important;
 }
 .photo-list-avatar{
     border-radius: 50%;
+}
+.photo-list-container:hover .photo-list-desc{
+    left: 0;
 }
 .extra-intro{
     font-weight: bolder;
@@ -224,6 +239,9 @@ footer{
 }
 .profile-header-container{
     background: rgb(242, 242, 242) !important;
+}
+.profile-post-section{
+    min-height: 600px;
 }
 .profile-name-text{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
