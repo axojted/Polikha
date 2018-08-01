@@ -54,8 +54,10 @@
                                 </div>
                                 <div class="col-12 pt-3">
                                     <p class="m-0"><i class="like-counter" alt='{{$article->id}}'>{{count($article->reactions->where('reaction','like'))}}</i> likes - <i class="dislike-counter" alt='{{$article->id}}'>{{count($article->reactions->where('reaction','dislike'))}}</i> dislikes</p>
+                                    @if(auth()->check())
                                 </div>
                                 <div class="col-12 w-100 pb-3 d-flex">
+                                    
                                     <span class="article-list-reacts">
                                         @if(count($article->reactions->where('user_id',auth()->id())->where('reaction','like')) > 0)
                                             <a href="/react" class="text-dark react-btn like-btn react-btn-active" name="{{$article->id}}" alt="like">Like</a>
@@ -69,6 +71,7 @@
                                         @endif
                                         {{-- <a href="" class="text-dark">Report</a> --}}
                                     </span>
+                                    @endif
                                     <i class="article-list-time ml-auto">{{$article->created_at->diffForHumans()}}</i>
                                 </div>
                             </div>

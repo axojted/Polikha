@@ -15,7 +15,7 @@
                         <div class="col-4 d-flex photo-list-container custom-background-image p-0" style="background-image:url('/storage/cover_images/{{$photo->cover_image}}');">
                             <div class="photo-list-desc row mx-0 position-relative">
                                 <div class="col-2 p-3">
-                                    <img src="/storage/avatar/{{auth()->user()->avatar}}" alt="" width="35px" height="35px" class="photo-list-avatar">
+                                    <img src="/storage/avatar/{{$photo->user->avatar}}" alt="" width="35px" height="35px" class="photo-list-avatar">
                                 </div>
                                 <div class="col-10">
                                     <h4 class="text-light m-0 p-0">{{$photo->user->first}} {{$photo->user->last}}</h4>
@@ -28,6 +28,7 @@
                                         <a href="/react" name="{{$photo->id}}" alt="like" class="react-btn like-btn">like</a> |
                                         <a href="/react" name="{{$photo->id}}" alt="dislike" class="react-btn dislike-btn">dislike</a>
                                      --}}
+                                     @if(auth()->check())
                                     <p class="text-light photo-list-reacts">
                                         @if(count($photo->reactions->where('user_id',auth()->id())->where('reaction','like')) > 0)
                                             <a href="/react" class="text-light react-btn like-btn react-btn-active" name="{{$photo->id}}" alt="like">Like</a>
@@ -36,10 +37,11 @@
                                         @endif
                                         @if(count($photo->reactions->where('user_id',auth()->id())->where('reaction','dislike')) > 0)
                                             <a href="/react" class="text-light react-btn react-btn-active dislike-btn" name="{{$photo->id}}" alt="dislike">Dislike</a>
-                                        @else
+                                        @else 
                                             <a href="/react" class="text-light react-btn dislike-btn" name="{{$photo->id}}" alt="dislike">Dislike</a>
                                         @endif
                                     </p>
+                                    @endif
                                 </div>
                             </div>
                         </div>
