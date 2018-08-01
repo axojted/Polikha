@@ -289,6 +289,14 @@ footer{
     background: #666 !important;
     color: #fff !important;
 }
+.btn-unfollow{
+    background: #fff !important;
+    color: #333 !important;
+}
+.btn-unfollow:hover{
+    background: #e1e1e1 !important;
+    color: #888 !important;
+}
 .btn-message{
     background: rgb(0,118,53);
 }

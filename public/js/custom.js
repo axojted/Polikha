@@ -78,9 +78,6 @@ $(document).ready(function(){
             }
         })
     })
-    $(document).on('click','.react-btn-active',function(e){
-        e.preventDefault();
-    })
     $(document).on('click','.react-btn',function(e){
         var id = $(this).attr('name');
         e.preventDefault();
@@ -123,6 +120,33 @@ $(document).ready(function(){
                     }
                     $('.dislike-btn[name='+id+']').removeClass('react-btn-active');
                 }
+            }
+        })
+    })
+    $(document).on('click','#follow-btn',function(e){
+        e.preventDefault();
+        $.ajax({
+            url: $(this).attr('href'),
+            type: 'post',
+            data: {
+                user_id: $(this).attr('name'),
+                follower_id:$(this).attr('alt'),
+                status: 'follow'
+            },
+            success: function(data){
+                if($("#follow-btn").hasClass('btn-follow')){
+                    $("#follow-btn").removeClass('btn-follow');
+                    $("#follow-btn").addClass('btn-unfollow');
+                    $("#follow-btn").text('Unfollow')
+                    console.log('yehey')
+                }else{
+                    $("#follow-btn").addClass('btn-follow');
+                    $("#follow-btn").removeClass('btn-unfollow');
+                    $("#follow-btn").text('Follow')
+
+                    console.log('nothing');
+                }
+                
             }
         })
     })

@@ -4,6 +4,7 @@ namespace App;
 
 use App\Post;
 use App\User;
+use App\Follow;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -37,5 +38,10 @@ class User extends Authenticatable
     public function reactions()
     {
         return $this->hasMany(Reaction::class);
+    }
+
+    public function follows()
+    {
+        return $this->hasMany(Follow::class);
     }
 }

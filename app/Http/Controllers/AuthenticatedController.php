@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use App\User;
+use App\Follow;
 use DB;
 use App\Reaction;
 use Illuminate\Support\Facades\Storage;
@@ -270,5 +271,25 @@ class AuthenticatedController extends Controller
             ]);
         }
         return $request->input('react');
+    }
+
+    public function follow(Request $request)
+    {
+        if($request->input('status') == 'follow'){
+            $newFollow = new Follow;
+            $follow = Follow::where('user_id',$request->input('user_id'))->where('follower_id',auth()->id())->first();
+
+            if($follow){
+                $follow->delete();
+            }
+            else{
+                $newFollow->user_id = $request->input('user_id');
+                $newFollow->follower_id = auth()->id();
+                $newFollow->status = $request->input('status');
+                $newFollow->save();
+            }
+        }
+
+        return $request->input('follow');
     }
 }

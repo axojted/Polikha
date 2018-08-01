@@ -20,8 +20,12 @@
                     @elseif(Route::is('profile'))
                     <a href="/profile-settings" class="btn-settings btn-customs mx-auto d-inline-block">Settings</a>
                     @elseif(Route::is('view-profile'))
-                    <a href="/follow/{id}" class="btn-follow btn-customs ml-auto mr-1 d-inline-block">Follow</a>
-                    <a href="/message/{id}" class="btn-message btn-customs d-inline-block ml-1 mr-auto">Message</a>
+                        @if(\App\Follow::where('user_id',$array['user']->id)->where('follower_id',auth()->id())->first())
+                            <a href="/follow" alt="{{auth()->id()}}" name="{{$array['user']->id}}" class="btn-unfollow btn-customs ml-auto mr-1 d-inline-block" id="follow-btn">Unfollow</a>
+                        @else
+                            <a href="/follow" alt="{{auth()->id()}}" name="{{$array['user']->id}}" class="btn-follow btn-customs ml-auto mr-1 d-inline-block" id="follow-btn">Follow</a>
+                        @endif
+                        <a href="/message" class="btn-message btn-customs d-inline-block ml-1 mr-auto" id="message-btn">Message</a>
                     @endif
                 </div>
             </div>
