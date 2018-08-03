@@ -36,7 +36,7 @@
             <div class="row py-1">
                 <div class="col-2 ml-auto text-center">
                     <h5 class="text-light m-0">Followers</h5>
-                    <p class="m-0 profile-counter-text">12</p>
+                    <p class="m-0 profile-counter-text">{{count($array['user']->follows)}}</p>
                 </div>
                 <div class="col-2 text-center">
                     <h5 class="text-light m-0">Likes</h5>

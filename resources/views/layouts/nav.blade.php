@@ -1,12 +1,12 @@
 @if(Route::is('index'))
 <nav class="navbar navbar-expand-md navbar-light p-0 px-5 fixed-top">
-    <a class="navbar-brand ml-auto invisible" href="/">Soloist<span>Collector</span></a>
+    <a class="navbar-brand ml-auto invisible" href="/">Polikha</a>
 @elseif(Route::is('profile'))
 <nav class="navbar navbar-expand-md navbar-light bg-dark p-0 px-5 fixed-top">
-        <a class="navbar-brand ml-auto " href="/">Soloist<span>Collector</span></a>
+        <a class="navbar-brand ml-auto " href="/">Polikha</a>
 @else
 <nav class="navbar navbar-expand-md navbar-light bg-light p-0 px-5 fixed-top">
-        <a class="navbar-brand ml-auto " href="/">Soloist<span>Collector</span></a>
+        <a class="navbar-brand ml-auto " href="/">Polikha</a>
 @endif
     <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
         aria-expanded="false" aria-label="Toggle navigation">
@@ -58,10 +58,10 @@
                     <a class="dropdown-item" href="/faq">FAQ</a>
                     <a class="dropdown-item" href="/about">About</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item social-media fa fa-facebook-square m-0 ml-auto" href="https://www.facebook.com/SoloistCollector" data-track-label="facebook"></a>
-                    <a class="dropdown-item social-media fa fa-instagram m-0"  href="https://www.instagram.com/SoloistCollector" data-track-label="instagram"></a>
-                    <a class="dropdown-item social-media fa fa-twitter m-0"  href="https://www.twitter.com/SoloistCollector" data-track-label="twitter"></a>
-                    <a class="dropdown-item social-media fa fa-pinterest m-0 mr-auto"  href="https://www.pinterest.com/SoloistCollector" data-track-label="pinterest"></a>
+                    <a class="dropdown-item social-media fa fa-facebook-square m-0 ml-auto" href="https://www.facebook.com/Polikha" data-track-label="facebook"></a>
+                    <a class="dropdown-item social-media fa fa-instagram m-0"  href="https://www.instagram.com/Polikha" data-track-label="instagram"></a>
+                    <a class="dropdown-item social-media fa fa-twitter m-0"  href="https://www.twitter.com/Polikha" data-track-label="twitter"></a>
+                    <a class="dropdown-item social-media fa fa-pinterest m-0 mr-auto"  href="https://www.pinterest.com/Polikha" data-track-label="pinterest"></a>
                 </div>
             </li>
         </ul>

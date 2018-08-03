@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 h-100 position-relative">
-                <h1 class="position-absolute">Soloist<span>Collector</span></h1>
+                <h1 class="position-absolute">Polikha</h1>
             </div>
         </div>
     </div>

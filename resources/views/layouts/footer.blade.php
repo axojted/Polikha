@@ -42,12 +42,12 @@
                     <div class="col-4">
                         <ul>
                             <h3>Social Media</h3>
-                            <li><a href="https://www.facebook.com/soloistcollector"><i class="fa fa-facebook"></i> Facebook</a></li>
-                            <li><a href="https://www.twitter.com/soloistcollector"><i class="fa fa-twitter"></i> Twitter</a></li>
-                            <li><a href="https://www.instagram.com/soloistcollector"><i class="fa fa-instagram"></i> Instagram</a></li>
-                            <li><a href="https://www.pinterest.com/soloistcollector"><i class="fa fa-pinterest"></i> Pinterest</a></li>
-                            <li><a href="https://www.github.com/SoloistCollector"><i class="fa fa-github"></i> Github</a></li>
-                            <li><a href="https://www.youtube.com/soloistcollector"><i class="fa fa-youtube-play"></i> YouTube</a></li>
+                            <li><a href="https://www.facebook.com/polikha"><i class="fa fa-facebook"></i> Facebook</a></li>
+                            <li><a href="https://www.twitter.com/polikha"><i class="fa fa-twitter"></i> Twitter</a></li>
+                            <li><a href="https://www.instagram.com/polikha"><i class="fa fa-instagram"></i> Instagram</a></li>
+                            <li><a href="https://www.pinterest.com/polikha"><i class="fa fa-pinterest"></i> Pinterest</a></li>
+                            <li><a href="https://www.github.com/polikha"><i class="fa fa-github"></i> Github</a></li>
+                            <li><a href="https://www.youtube.com/polikha"><i class="fa fa-youtube-play"></i> YouTube</a></li>
                         </ul> 
                     </div>
                 </div>

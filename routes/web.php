@@ -1,4 +1,7 @@
 <?php
+//==============ADMIN==============
+Route::get('/admin','AdminController@login');
+
 //==============FREE===============
 Route::get('/','FreeController@index')->name('index');
 Route::get('/faq','FreeController@faq')->name('faq');
