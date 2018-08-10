@@ -1,10 +1,13 @@
 <?php
 
 namespace App;
-
-use Illuminate\Database\Eloquent\Model;
+use App\Role;
+use App\UserRole;
 
 class Role extends Model
 {
-    //
+    public function user_role()
+    {
+        return $this->hasMany(UserRole::class);
+    }
 }

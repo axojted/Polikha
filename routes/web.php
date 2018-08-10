@@ -1,6 +1,6 @@
 <?php
-//==============ADMIN==============
-Route::get('/admin','AdminController@login');
+//==============ADMIN================
+Route::get('/3/index','AdminController@index')->name('admin-index');
 
 //==============FREE===============
 Route::get('/','FreeController@index')->name('index');
@@ -12,6 +12,7 @@ Route::get('/popular-photos','FreeController@popularPhotos')->name('popular-phot
 Route::get('/discover-articles','FreeController@discoverArticles')->name('discover-articles');
 Route::get('/popular-articles','FreeController@popularArticles')->name('popular-articles');
 Route::get('/view-post/{id}','FreeController@viewPostCreate')->name('view-post-create');
+Route::get('/search','FreeController@search');
 
 //==========AUTHENTICATED===============
 Route::get('/profile','AuthenticatedController@profile')->name('profile');
@@ -31,6 +32,7 @@ Route::post('/block','AuthenticatedController@block')->name('block');
 Route::get('/logout','AuthenticatedController@logout')->name('logout');
 
 //==============UNAUTHENTICATED===================
+Route::get('/3/login','UnauthenticatedController@adminLogin')->name('admin-login');
 Route::get('/login','UnauthenticatedController@loginCreate')->name('login-create');
 Route::post('/login','UnauthenticatedController@loginStore')->name('login');
 Route::get('/signup','UnauthenticatedController@signupCreate')->name('signup-create');

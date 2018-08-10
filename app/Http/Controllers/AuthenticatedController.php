@@ -19,7 +19,7 @@ class AuthenticatedController extends Controller
     }
     public function profile($id = 1)
     {
-        if(auth()->check() && count(DB::table('update_username')->where('user_id','=',auth()->id())->first()) <= 0)
+        if(auth()->check() && count(DB::table('update_username')->where('user_id','=',auth()->id())->get()) <= 0)
         {
             return redirect('set-profile');
         }else{
@@ -125,7 +125,7 @@ class AuthenticatedController extends Controller
     }
     public function createPhotos()
     {
-        if(count(DB::table('update_username')->where('user_id','=',auth()->id())->first()) <= 0)
+        if(count(DB::table('update_username')->where('user_id','=',auth()->id())->get()) <= 0)
         {
             return redirect('set-profile');
         }else{
@@ -134,7 +134,7 @@ class AuthenticatedController extends Controller
     }
     public function createArticle()
     {
-        if(count(DB::table('update_username')->where('user_id','=',auth()->id())->first()) <= 0)
+        if(count(DB::table('update_username')->where('user_id','=',auth()->id())->get()) <= 0)
         {
             return redirect('set-profile');
         }else{
@@ -206,7 +206,7 @@ class AuthenticatedController extends Controller
     }
     public function contribute()
     {
-        if(count(DB::table('update_username')->where('user_id','=',auth()->id())->first()) <= 0)
+        if(count(DB::table('update_username')->where('user_id','=',auth()->id())->get()) <= 0)
         {
             return redirect('set-profile');
         }else{
@@ -226,7 +226,8 @@ class AuthenticatedController extends Controller
         $user->username = $request->input('username');
         $user->save();
         DB::table('update_username')->insert([
-            'user_id'=>auth()->id()
+            'user_id'=>auth()->id(),
+            'username'=>$request->input('username')
         ]);
         return redirect('/profile');
     }
@@ -234,8 +235,10 @@ class AuthenticatedController extends Controller
     {
         $post = Post::find($request->input('post_id'));
         $postLikesCounter = $post->likes;
-        $reaction = Reaction::where('user_id',auth()->id())->where('post_id',$request->input('post_id'))->first();
-        if(count($reaction)>0){
+        $reactions = Reaction::where('user_id',auth()->id())->where('post_id',$request->input('post_id'))->get();
+        if(count($reactions)>0){
+            foreach($reactions as $reaction){
+
             if($request->input('react') == $reaction->reaction){
                 if($reaction->reaction == 'like'){
                     if($postLikesCounter > 0){
@@ -258,6 +261,7 @@ class AuthenticatedController extends Controller
                 $reaction->reaction = $request->input('react');
                 $reaction->save();
             }
+            }            
         }else{
                 if($request->input('react') == 'like')
                 {
@@ -288,8 +292,9 @@ class AuthenticatedController extends Controller
                 $newFollow->status = $request->input('status');
                 $newFollow->save();
             }
+            return count(Follow::where('user_id',$request->input('user_id'))->get());
+        }else{
+            return console.log("Invalid Request");
         }
-
-        return $request->input('follow');
     }
 }

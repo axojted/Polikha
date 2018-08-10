@@ -14,14 +14,17 @@
     </button>
     <div class="collapse navbar-collapse ml-auto" id="collapsibleNavId">
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <form action="">
+                <input type="text" name="search-input" id="search-input">
+            </form>
             @if(auth()->check())
             <a href="/profile" class="nav-item nav-link avatar-holder">
-                <img src="/storage/avatar/{{auth()->user()->avatar}}" alt="" id="profile-avatar" style="width: 30px; height: 30px;border-radius: 50%;">
+                <img src="/storage/avatar/{{auth()->user()->avatar}}" alt="" title="{{auth()->user()->first}} {{auth()->user()->last}}" id="profile-avatar" style="width: 30px; height: 30px;border-radius: 50%;">
             </a>
             @endif
             <li class="nav-item dropdown">
                 @if(Route::is('profile'))
-                <a class="nav-link dropdown-toggle text-light" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Browse</a>
+                <a class="nav-link dropdown-toggle text-light dropDownCustom" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Browse</a>
                 @else
                 <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Browse</a>
                 @endif

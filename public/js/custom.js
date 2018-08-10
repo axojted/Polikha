@@ -1,3 +1,6 @@
+var rememberSearch;
+
+
 $(document).ready(function(){
     $.ajaxSetup({
         headers: {
@@ -138,16 +141,34 @@ $(document).ready(function(){
                     $("#follow-btn").removeClass('btn-follow');
                     $("#follow-btn").addClass('btn-unfollow');
                     $("#follow-btn").text('Unfollow')
-                    console.log('yehey')
                 }else{
                     $("#follow-btn").addClass('btn-follow');
                     $("#follow-btn").removeClass('btn-unfollow');
                     $("#follow-btn").text('Follow')
-
-                    console.log('nothing');
                 }
-                
+                $('.follow-counter').html(data);
+                console.log(data);
             }
         })
+    })
+    $(document).on('keydown','#search-input',function(e){
+        let newSearch = $(this).val();
+        if(e.keyCode == '13'){
+            if(newSearch !== ''){
+                $.ajax({
+                    url: '/search',
+                    type: 'post',
+                    data: {
+                    }
+                })
+            }
+        }
+    });
+    $(document).on('focusout','#search-input',function(){
+        rememberSearch = $(this).val();
+        $(this).val('');
+    })
+    $(document).on('focus','#search-input',function(){
+        $(this).val(rememberSearch);
     })
 })

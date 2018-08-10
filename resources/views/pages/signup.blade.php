@@ -26,6 +26,13 @@
                         <div class="form-group">
                             <input type="submit" value="JOIN" name="submit" id="submit" class="btn btn-dark btn-block">
                         </div>
+                        @if(count($errors->all()) > 0)
+                        <div class="form-group">
+                            @foreach($errors->all() as $error)
+                                <li>{{$error}}</li>
+                            @endforeach
+                        </div>
+                        @endif
                     </form>
                 </div>
             </div>

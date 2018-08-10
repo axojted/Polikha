@@ -16,9 +16,9 @@ class CreateReactionsTable extends Migration
         Schema::create('reactions', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
-            $table->foreign('user_id')->references('users')->on('id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->integer('post_id');
-            $table->foreign('post_id')->references('posts')->on('id');
+            $table->foreign('post_id')->references('id')->on('posts');
             $table->string('reaction');
             $table->timestamps();
         });

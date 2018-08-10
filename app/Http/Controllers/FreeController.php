@@ -10,24 +10,30 @@ class FreeController extends Controller
 {
     public function test()
     {
-        return "This is a test url";
+        return view('pages.test');
     }
     public function index()
     {
         if(auth()->check()){
-            if(count(DB::table('update_username')->where('user_id','=',auth()->id())->first()) <= 0)
+            if(count(DB::table('update_username')->where('user_id','=',auth()->id())->get()) < 1)
             {
                 return redirect('set-profile');
             }else{
-                return view('layouts.index');
+                $articles = Post::where('type','article')->get();
+                $photos = Post::where('type','photo')->get();
+                $posts = ['articles'=>$articles,'photos'=>$photos];
+                return view('layouts.index')->with('posts',$posts);
             }
         }else{
-            return view('layouts.index');
+            $articles = Post::where('type','article')->limit(6)->get();
+            $photos = Post::where('type','photo')->limit(6)->get();
+            $posts = ['articles'=>$articles,'photos'=>$photos];
+            return view('layouts.index')->with('posts',$posts);
         }
     }
     public function showProfile()
     {
-        if(count(DB::table('update_username')->where('user_id','=',auth()->id())->first()) >= 0)
+        if(count(DB::table('update_username')->where('user_id','=',auth()->id())->get()) >= 0)
         {
             return redirect('set-profile');
         }else{
@@ -76,6 +82,10 @@ class FreeController extends Controller
     {
         $id->views = $id->views+1;
         $id->save();
-        redirect('/');
+        return redirect('/');
+    }
+    public function search()
+    {
+        return 
     }
 }

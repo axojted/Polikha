@@ -5,6 +5,8 @@ namespace App;
 use App\Post;
 use App\User;
 use App\Follow;
+use App\Role;
+use App\UserRole;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -17,9 +19,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'first','last','username','email', 'password'
-    ];
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -43,5 +43,9 @@ class User extends Authenticatable
     public function follows()
     {
         return $this->hasMany(Follow::class);
+    }
+    public function user_role()
+    {
+        return $this->belongsTo(UserRole::class);
     }
 }

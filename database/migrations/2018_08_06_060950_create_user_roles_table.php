@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableUpdateusername extends Migration
+class CreateUserRolesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateTableUpdateusername extends Migration
      */
     public function up()
     {
-        Schema::create('update_username', function (Blueprint $table) {
+        Schema::create('user_roles', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->string('username');
-            $table->timestamps(true);
+            $table->integer('role_id');
+            $table->foreign('role_id')->references('id')->on('roles');
+            $table->timestamps();
         });
     }
 
@@ -29,6 +30,6 @@ class CreateTableUpdateusername extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('user_roles');
     }
 }

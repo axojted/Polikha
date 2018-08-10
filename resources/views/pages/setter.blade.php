@@ -17,6 +17,13 @@
                         <div class="form-group ml-auto d-flex">
                             <input type="submit" name="submit" id="submit" value="SET" class="btn btn-dark btn-customs ml-auto">
                         </div>
+                        @if(count($errors->all()) > 0)
+                        <div class="form-group">
+                            @foreach($errors->all() as $error)
+                                <li>{{$error}}</li>
+                            @endforeach
+                        </div>
+                        @endif
                     </form>
                 </div>
             </div>
