@@ -12,7 +12,8 @@ Route::get('/popular-photos','FreeController@popularPhotos')->name('popular-phot
 Route::get('/discover-articles','FreeController@discoverArticles')->name('discover-articles');
 Route::get('/popular-articles','FreeController@popularArticles')->name('popular-articles');
 Route::get('/view-post/{id}','FreeController@viewPostCreate')->name('view-post-create');
-Route::get('/search','FreeController@search');
+Route::get('/search','FreeController@searchCreate')->name('search-create');
+Route::post('/search','FreeController@searchStore')->name('search-store');
 
 //==========AUTHENTICATED===============
 Route::get('/profile','AuthenticatedController@profile')->name('profile');

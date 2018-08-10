@@ -2,6 +2,7 @@ var rememberSearch;
 
 
 $(document).ready(function(){
+    $("#search-input").val('');
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -151,19 +152,6 @@ $(document).ready(function(){
             }
         })
     })
-    $(document).on('keydown','#search-input',function(e){
-        let newSearch = $(this).val();
-        if(e.keyCode == '13'){
-            if(newSearch !== ''){
-                $.ajax({
-                    url: '/search',
-                    type: 'post',
-                    data: {
-                    }
-                })
-            }
-        }
-    });
     $(document).on('focusout','#search-input',function(){
         rememberSearch = $(this).val();
         $(this).val('');

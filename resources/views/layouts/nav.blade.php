@@ -14,7 +14,8 @@
     </button>
     <div class="collapse navbar-collapse ml-auto" id="collapsibleNavId">
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-            <form action="">
+            <form action="/search" method="post" role="form">
+                {{csrf_field()}}
                 <input type="text" name="search-input" id="search-input">
             </form>
             @if(auth()->check())

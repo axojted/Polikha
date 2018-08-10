@@ -84,8 +84,15 @@ class FreeController extends Controller
         $id->save();
         return redirect('/');
     }
-    public function search()
+    public function searchCreate()
     {
-        return 
+        return view('pages.search');
+    }
+    public function searchStore()
+    {
+        $posts = Post::where('title','like',$request->input('search'))->get();
+        $users = User::where('id','!=',auth()->id())->where('first','like',$request->input('search'))->orWhere('last','like',$request->input('search'))->get();
+        $searches = ['users'=>$users,'posts'=>$posts];
+        return view('pages.search')->with('searches',$searches);
     }
 }
